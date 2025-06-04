@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Lubango - Sua Estadia Perfeita</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos Gerais */
+:root {
+    --primary-color: #a08169; /* Marrom para um toque de sofisticação/terra */
+    --secondary-color: #D2B48C; /* Bege para um tom mais suave */
+    --text-color: #333;
+    --light-bg: #f9f9f9;
+    --white: #fff;
+    --dark: #222;
+    --brown-dark: #6C3E21; /* Um marrom mais escuro para botões */
+    --green-whatsapp: #25D366;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+     background: var(--white);
+}
+
+html{
+
+    scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+ul {
+    list-style: none;
+}
+
+/* Botões */
+.btn {
+    display: inline-block;
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease; /* Transição para todas as propriedades */
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn:hover {
+    background: var(--brown-dark); /* Usar um marrom mais escuro para o hover */
+    transform: translateY(-2px); /* Pequeno efeito ao passar o mouse */
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-secondary {
+    background: var(--secondary-color);
+    color: var(--dark);
+}
+
+.btn-secondary:hover {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-small {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+
+
+
+/* Header - Hero Section */
+.hero {
+    height: 100vh;
+    background: url('fotos principais/principal1.jpg') no-repeat center center/cover; /* Imagem de fundo atraente */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza conteúdo verticalmente */
+    color: var(--white);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Overlay escuro para contraste */
+    z-index: -1;
+}
+
+.navbar {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px 0;
+    position: absolute; /* Torna a barra de navegação absoluta para ficar no topo */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Estilo do Logotipo */
+.logo {
+    font-family: 'Georgia', serif; /* Fonte mais clássica ou elegante */
+    font-size: 1.6rem; /* Tamanho maior para destaque */
+    font-weight: bold;
+    color: var(--white);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    letter-spacing: 1px; /* Espaçamento entre letras */
+    transition: all 0.3s ease;
+}
+
+.logo:hover {
+    color: var(--secondary-color);
+    transform: scale(1.02);
+}
+
+/* Estilo dos Links de Navegação */
+.nav-links {
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 35px; /* Mais espaçamento entre os itens */
+}
+
+.nav-links a {
+    color: var(--white);
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.3s ease;
+    position: relative;
+    padding-bottom: 5px; /* Espaço para o underline */
+}
+
+.nav-links a:hover {
+    color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+/* Efeito de underline para links de navegação */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--secondary-color);
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+
+/* Menu Hambúrguer para Mobile */
+.menu-toggle {
+    display: none; /* Escondido por padrão em desktop */
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 1001; /* Acima do menu */
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--white);
+    margin: 4px 0;
+    transition: 0.4s;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 50px;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.7);
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+/* Seções Gerais */
+.section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.section p {
+    font-size: 1.1rem;
+    margin: 0 auto 40px auto;
+}
+
+.bg-light {
+    background: var(--light-bg);
+}
+
+/* Seções de Conteúdo de Duas Colunas (Sobre e Gastronomia) */
+.content-two-columns {
+    display: flex;
+    align-items: center; /* Alinha verticalmente no centro */
+    gap: 50px; /* Espaço entre as colunas */
+    text-align: left; /* Alinhamento de texto dentro das colunas */
+}
+
+.content-image {
+    flex: 1; /* Ocupa o espaço disponível */
+    min-width: 300px; /* Garante que a imagem não fique muito pequena */
+}
+
+.content-image img {
+    width: 100%;
+    height: 400px; /* Altura fixa para as imagens */
+    object-fit: cover; /* Recorta a imagem para cobrir a área */
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-text {
+    flex: 1; /* Ocupa o espaço disponível */
+}
+
+.content-text h2 {
+    text-align: left; /* Alinha o título à esquerda */
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+
+.content-text p {
+    margin-bottom: 15px; /* Espaço entre parágrafos */
+    font-size: 1.1rem;
+    line-height: 1.7;
+    max-width: none; /* Remove o max-width herdado da section p */
+}
+
+.content-text .btn {
+    margin-top: 20px;
+}
+
+/* Ordem reversa para a seção "Sobre" (imagem à direita, texto à esquerda) */
+.section-content-reverse .content-two-columns {
+    flex-direction: row-reverse;
+}
+
+/* Seção de Seleção de Unidades (HL1/HL2) */
+.units-selection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.unit-card {
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    text-align: center; /* Centraliza o conteúdo do card */
+    transition: transform 0.3s ease;
+    padding-bottom: 20px; /* Espaçamento na parte inferior */
+    position: relative; /* Para o badge */
+}
+
+.unit-card:hover {
+    transform: translateY(-5px);
+}
+
+.unit-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.unit-card h3 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.unit-card p {
+    font-size: 1rem;
+    margin: 0 20px 20px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.unit-card .btn {
+    margin-top: 10px;
+}
+
+.badge {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+/* Carrossel de Quartos */
+.carousel-container {
+    position: relative; /* Para posicionar as setas */
+    margin-top: 40px;
+    padding: 0 50px; /* Espaço para as setas */
+}
+
+.room-carousel {
+    display: flex;
+    overflow-x: scroll; /* Permite rolagem horizontal */
+    scroll-snap-type: x mandatory; /* Força o snap em cada item */
+    -webkit-overflow-scrolling: touch; /* Melhora a rolagem em iOS */
+    gap: 30px; /* Espaço entre os itens */
+    padding-bottom: 20px; /* Espaço para a barra de rolagem */
+    /* Removido margin-top, pois o container já tem */
+    scroll-padding: 0 10px; /* Espaçamento nas bordas do carrossel */
+}
+
+.room-carousel::-webkit-scrollbar {
+    height: 8px; /* Altura da barra de rolagem */
+}
+
+.room-carousel::-webkit-scrollbar-track {
+    background: var(--light-bg); /* Cor de fundo da trilha */
+    border-radius: 10px;
+}
+
+.room-carousel::-webkit-scrollbar-thumb {
+    background: var(--secondary-color); /* Cor da "bolinha" da barra de rolagem */
+    border-radius: 10px;
+}
+
+.room-carousel::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+
+.carousel-item {
+    flex: 0 0 350px; /* Não cresce, não encolhe, largura base de 350px */
+    scroll-snap-align: start; /* Alinha o início do item com o início da rolagem */
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.carousel-item:hover {
+    transform: translateY(-5px);
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.carousel-item h3 {
+    font-size: 1.8rem;
+    margin: 15px 20px 10px;
+    color: var(--primary-color);
+}
+
+.carousel-item p {
+    font-size: 1rem;
+    margin: 0 20px 20px;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.carousel-item .btn-small {
+    margin: 0 20px 20px;
+}
+
+/* Estilos das Setas do Carrossel */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro semi-transparente */
+    color: var(--white);
+    border: none;
+    padding: 15px 10px; /* Ajuste o padding para o tamanho do botão */
+    cursor: pointer;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    z-index: 10; /* Garante que a seta esteja acima dos itens */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.carousel-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    transform: translateY(-50%) scale(1.05);
+}
+
+.carousel-arrow.prev {
+    left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.carousel-arrow.next {
+    right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/* Footer */
+footer {
+    background: var(--dark);
+    color: var(--white);
+    padding: 60px 0 20px;
+    font-size: 0.9rem;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.footer-info,
+.footer-links,
+.footer-social {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-info h3,
+.footer-links h3,
+.footer-social h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: var(--secondary-color);
+}
+
+.footer-info p {
+    margin-bottom: 10px;
+    line-height: 1.8;
+}
+
+.footer-info i {
+    margin-right: 10px;
+    color: var(--secondary-color);
+}
+
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: var(--white);
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--secondary-color);
+}
+
+.footer-social a {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: var(--secondary-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+}
+
+/* Botão flutuante do WhatsApp */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: var(--green-whatsapp);
+    color: var(--white);
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    background-color: #128C7E;
+    transform: scale(1.1);
+}
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        position: absolute;
+        top: 80px;
+        left: 0;
+        padding: 20px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+    }
+
+    .nav-links.active {
+        display: flex;
+        max-height: 300px;
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+        text-align: center;
+    }
+
+    .nav-links a {
+        padding: 10px 0;
+        display: block;
+        color: var(--white);
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    /* Animação do ícone do hambúrguer */
+    .menu-toggle.is-active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.is-active .bar:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .menu-toggle.is-active .bar:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+
+    .section {
+        padding: 60px 0;
+    }
+
+    .section h2 {
+        font-size: 2rem;
+    }
+
+    .content-two-columns,
+    .units-selection-grid {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .section-content-reverse .content-two-columns {
+        flex-direction: column;
+    }
+
+    .content-image {
+        min-width: unset;
+        order: -1;
+    }
+    .section-content-reverse .content-image {
+        order: -1;
+    }
+
+    .content-text h2,
+    .content-text p {
+        text-align: center;
+    }
+    .content-text .btn {
+        margin: 20px auto 0 auto;
+    }
+
+    /* Ajustes para o carrossel em mobile */
+    .carousel-container {
+        padding: 0 10px; /* Reduz padding para as setas em mobile */
+    }
+    .carousel-arrow {
+        padding: 10px 8px; /* Setas menores em mobile */
+        font-size: 1.2rem;
+    }
+    .room-carousel {
+        scroll-snap-type: x mandatory;
+        scroll-padding: 0 10px; /* Ajusta padding para mobile */
+    }
+    .carousel-item {
+        flex: 0 0 calc(100% - 20px); /* 100% da largura menos o padding lateral */
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-links ul {
+        padding-left: 0;
+    }
+
+    .footer-social {
+        margin-top: 20px;
+    }
+
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .btn {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+
+    /* Ajustes específicos para carrossel em telas muito pequenas */
+    .carousel-item {
+        flex: 0 0 calc(100% - 20px); /* Ajusta para preencher quase toda a largura */
+    }
+}
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <nav class="navbar">
+            <div class="container">
+                <a href="#" class="logo">
+                    <span>Hotel Lubango</span>
+                    </a>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <ul class="nav-links" id="nav-menu">
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#unidades">Reservar</a></li>
+                    <li><a href="#quartos">Quartos</a></li>
+                    <li><a href="#gastronomia">Gastronomia</a></li>
+                    </ul>
+            </div>
+        </nav>
+        <div class="hero-content">
+            <h1>Bem-vindo ao Hotel Lubango</h1>
+            <p>Onde o conforto encontra a hospitalidade angolana.</p>
+            <a href="#unidades" class="btn btn-primary">Fazer Reserva</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="sobre" class="section section-content-reverse">
+            <div class="container content-two-columns">
+                <div class="content-image">
+                    <img src="fotos principais/sobre.jpg" alt="Hotel Lubango Interior ou Recepção">
+                </div>
+                <div class="content-text">
+                    <h2>Sobre o Hotel Lubango</h2>
+                    <p>O Hotel Lubango é um refúgio de tranquilidade e conforto no coração da cidade. Com uma tradição de excelência e hospitalidade, oferecemos aos nossos hóspedes uma experiência inesquecível, seja em viagens de negócios ou lazer. Nossas instalações modernas e equipe dedicada garantem uma estadia relaxante e produtiva.
+                    Descubra a hospitalidade que faz do Hotel Lubango a sua casa longe de casa.</p>
+                   <!--<a href="#" class="btn btn-primary">Saiba Mais</a>-->
+                </div>
+            </div>
+        </section>
+
+        <section id="unidades" class="section bg-light">
+            <div class="container">
+                <h2>Nossas Unidades: HL1 e HL2</h2>
+                <p>O Hotel Lubango orgulha-se de apresentar duas opções distintas de hospedagem para atender a todas as suas preferências. Escolha a que melhor combina com sua viagem!</p>
+                <div class="units-selection-grid">
+                    <div class="unit-card">
+                        <img src="fotos principais/hl1_pricipal.jpg" alt="Hotel Lubango HL1">
+                        <h3>Hotel Lubango HL1</h3>
+                        <p>Nosso edifício original, com um charme clássico e acolhedor, perfeito para quem busca a tradição da hospitalidade de Lubango. Oferece ambientes familiares e um serviço atencioso.</p>
+                        <a href="hl1.html" class="btn btn-primary">Reserva HL1</a>
+                    </div>
+                    <div class="unit-card modern-unit">
+                        <img src="fotos principais/hl2_pricipal.jpg" alt="Hotel Lubango HL2">
+                        <h3>Hotel Lubango HL2 <span class="badge">Moderno</span></h3>
+                        <p>O edifício mais recente, com um design contemporâneo e instalações de ponta. Ideal para viajantes que preferem tecnologia, conforto e um toque de modernidade em sua estadia.</p>
+                        <a href="hl2.html" class="btn btn-primary">Reservar HL2</a>
+                    </div>
+                </div>
+                <p class="small-text" style="margin-top: 30px;">Ambas as unidades oferecem o padrão de excelência e conforto que você espera do Hotel Lubango.</p>
+            </div>
+        </section>
+
+
+
+
+
+
+
+
+
+
+        <section id="quartos" class="section">
+            <div class="container">
+                <h2>Nossos Quartos</h2>
+                <p>Descubra o conforto e a elegância em nossas acomodações. Deslize ou use as setas para ver mais fotos!</p>
+
+
+
+                <div class="carousel-container"> <button class="carousel-arrow prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                    <div class="room-carousel" id="roomCarousel">
+                        <div class="room-card carousel-item">
+                            <img src="fotos principais/hl1_quarto_casal.jpg" alt="HL1 Quarto casal">
+                            <h3>HL1: Quarto Casal</h3>
+                            <p>Aconchego tradicional com vista para a cidade. Cama king, ar condicionado e Wi-Fi.</p>
+                            <a href="hl1.html" class="btn btn-small">Detalhes HL1</a>
+                        </div>
+
+                        
+                        <div class="room-card carousel-item">
+                            <img src="fotos principais/hl1_quarto_twin.jpg" alt="HL1 Suíte Executiva">
+                            <h3>HL1: Quarto Twin</h3>
+                            <p>Espaço e conforto para sua produtividade e lazer. Sala de estar separada.</p>
+                            <a href="hl1.html" class="btn btn-small">Detalhes HL1</a>
+                        </div>
+                        <div class="room-card carousel-item">
+                            <img src="fotos principais/Suite_hl1.jpg" alt="HL1 Quarto suite">
+                            <h3>HL1: Suíte</h3>
+                            <p>Design moderno, tecnologia e vistas panorâmicas. Smart TV e estação de trabalho ergonômica.</p>
+                            <a href="hl1.html" class="btn btn-small">Detalhes HL2</a>
+                        </div>
+                        <div class="room-card carousel-item">
+                            <img src="fotos principais/ap_hl2.jpg" alt="HL2 Suíte Deluxe">
+                            <h3>HL2:Apartamento</h3>
+                            <p>O auge do luxo moderno. Ampla área social, banheira de hidromassagem e mordomo eletrônico.</p>
+                            <a href="hl2.html" class="btn btn-small">Detalhes HL2</a>
+                        </div>
+                        <div class="room-card carousel-item">
+                            <img src="fotos principais/hl2_quarto_casal.jpg" alt="HL2 Suíte Deluxe">
+                            <h3>HL2:Quarto Casal</h3>
+                            <p>O auge do luxo moderno. Ampla área social, banheira de hidromassagem e mordomo eletrônico.</p>
+                            <a href="hl2.html" class="btn btn-small">Detalhes HL2</a>
+                        </div>
+                        <div class="room-card carousel-item">
+                            <img src="fotos principais/HL2_quarto_twin.jpg" alt="HL2 Quarto Família">
+                            <h3>HL2: Quarto TWIN</h3>
+                            <p>Espaçoso e funcional para famílias, com opções de camas extras e área de jogos.</p>
+                            <a href="hl2.html" class="btn btn-small">Detalhes HL2</a>
+                        </div>
+                    </div>
+                    <button class="carousel-arrow next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <section id="gastronomia" class="section bg-light">
+            <div class="container content-two-columns">
+                <div class="content-image">
+                    <img src="fotos principais/restaurante_p.jpg" alt="Restaurante do Hotel Lubango">
+                </div>
+                <div class="content-text">
+                    <h2>Gastronomia</h2>
+                    <p>Nosso restaurante, além de servir um delicioso e completo café da manhã, também serve entradas e petiscos nos horários entre 15:00 e 22:00. Com nosso 'room service' é possível saborear-los no conforto do apartamento.</p>
+                    <p>Desfrute de uma experiência culinária inesquecível com pratos que celebram os sabores locais e internacionais, preparados com ingredientes frescos e da mais alta qualidade.</p>
+                    <a href="#" class="btn btn-primary">Saiba Mais</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Hotel Lubango</h3>
+                    <p>Sua casa de conforto em Lubango.</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Rua Principal, Cidade de Lubango</p>
+                    <p><i class="fas fa-phone"></i> +244933919136</p>
+                    <p><i class="fas fa-envelope"></i> contato@hotellubango.com</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Links Úteis</h3>
+                    <ul>
+                        <li><a href="#sobre">Sobre Nós</a></li>
+                        <li><a href="#unidades">Nossas Unidades</a></li>
+                        <li><a href="#quartos">Acomodações</a></li>
+                        <li><a href="#gastronomia">Culinária</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Siga-nos</h3>
+                    <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Hotel Lubango. Todos os direitos reservados.</p>
+            </div>
+        </div>
+        <a href="https://wa.me/244933919136" class="whatsapp-float" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </footer>
+
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.toggle('is-active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Fechar o menu ao clicar em um link
+        document.querySelectorAll('#nav-menu a').forEach(item => {
+            item.addEventListener('click', () => {
+                mobileMenu.classList.remove('is-active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Lógica do Carrossel de Quartos
+        const roomCarousel = document.getElementById('roomCarousel');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        // Calcula a largura de um item do carrossel (considerando o gap)
+        function getScrollAmount() {
+            const firstItem = roomCarousel.querySelector('.carousel-item');
+            if (!firstItem) return 0;
+            const itemWidth = firstItem.offsetWidth;
+            const gap = parseFloat(getComputedStyle(roomCarousel).gap);
+            return itemWidth + gap;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            roomCarousel.scrollBy({
+                left: getScrollAmount(),
+                behavior: 'smooth'
+            });
+        });
+
+        prevBtn.addEventListener('click', () => {
+            roomCarousel.scrollBy({
+                left: -getScrollAmount(),
+                behavior: 'smooth'
+            });
+        });
+
+        // Opcional: Desabilitar setas se não houver mais itens para rolar
+        // Isso seria mais complexo e exigiria observar o scroll.
+        // Para simplicidade, as setas sempre estarão visíveis.
+    </script>
+</body>
+</html>
